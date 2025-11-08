@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-bjzs-api
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+      - GOOGLE_SHEETS_CREDENTIALS=${GOOGLE_SHEETS_CREDENTIALS}
+      - GOOGLE_SHEET_ID=${GOOGLE_SHEET_ID}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-sentence-transformers/all-MiniLM-L6-v2}
+      - TOP_K_RESULTS=${TOP_K_RESULTS:-5}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-flash-exp}
+      - GEMINI_TEMPERATURE=${GEMINI_TEMPERATURE:-0.7}
+    volumes:
+      - ./app:/app/app
+      - model-cache:/home/appuser/.cache
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - ai-network
+
+volumes:
+  model-cache:
+    driver: local
+
+networks:
+  ai-network:
+    driver: bridge
+
