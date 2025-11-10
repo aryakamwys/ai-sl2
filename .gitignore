@@ -1,7 +1,8 @@
 # .gitignore untuk Smart AQI System
 
 # Streamlit secrets
-.streamlit/secrets.toml
+.streamlit
+main copy.py
 
 # Python
 __pycache__/
