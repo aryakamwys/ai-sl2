@@ -1,7 +1,7 @@
 # .gitignore untuk Smart AQI System
 
 # Streamlit secrets
-.streamlit
+.streamlit/
 main copy.py
 
 # Python
