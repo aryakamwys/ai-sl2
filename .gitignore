@@ -4,6 +4,7 @@
 .streamlit/
 main copy.py
 
+
 # Python
 __pycache__/
 *.py[cod]

@@ -14,9 +14,9 @@ st.set_page_config(
 
 # API Key dari Streamlit secrets atau hardcoded
 try:
-    GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "AIzaSyDIb6ZN6WecGIBm4-GThx2js4muYJuiDVA")
+    GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "")
 except:
-    GEMINI_API_KEY = "AIzaSyDIb6ZN6WecGIBm4-GThx2js4muYJuiDVA"
+    GEMINI_API_KEY = ""
 
 # Configure Gemini
 if GEMINI_API_KEY and GEMINI_API_KEY != "YOUR_GEMINI_API_KEY_HERE":
