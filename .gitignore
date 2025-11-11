@@ -3,8 +3,9 @@
 # Streamlit secrets
 .streamlit/
 main copy.py
-
-
+RAG_SYSTEM_GUIDE.md
+rekomendasi copy.py
+rekomendasi.py
 # Python
 __pycache__/
 *.py[cod]
